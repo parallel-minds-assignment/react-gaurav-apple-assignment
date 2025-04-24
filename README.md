@@ -4,16 +4,16 @@ A modern, responsive movie search application built with React, TypeScript, and 
 
 ## Features
 
-- 🎬 Real-time movie search using OMDB API
-- 🎨 Modern UI with card-based layout
-- 🖱️ Interactive hover tooltips with movie details
-- ⭐ Star rating visualization
-- 📱 Responsive design
-- 🎯 TypeScript for type safety
-- 🎨 SCSS modules for styling
-- 🔄 Infinite scrolling
-- 🖼️ Lazy loading of images
-- ♿ Accessibility features
+-  Real-time movie search using OMDB API
+-  Modern UI with card-based layout
+-  Interactive hover tooltips with movie details
+-  Star rating visualization
+-  Responsive design
+-  TypeScript for type safety
+-  SCSS modules for styling
+-  Infinite scrolling
+-  Lazy loading of images
+-  Accessibility features
 
 ## Tech Stack
 
@@ -162,4 +162,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-Built with ❤️ by Parallel Minds
