@@ -1,0 +1,113 @@
+/**
+ * @file theme.scss
+ * @description Global theme variables for the movie search application.
+ * Defines color schemes, spacing, border radius, shadows, and transitions.
+ * Includes both light and dark theme variables.
+ * 
+ * @author Gaurav Bagul
+ * @company Parallel Minds
+ * @created April 22, 2024
+ */
+
+/**
+ * @description Root level theme variables
+ * Defines the default light theme variables
+ */
+:root {
+  /* Colors */
+  --color-primary: #007bff;
+  --color-primary-dark: #0056b3;
+  --color-background: #f5f5f5;
+  --color-background-alt: #e9ecef;
+  --color-background-card: #ffffff;
+  --color-background-card-rgb: 255, 255, 255;
+  --color-text: #212529;
+  --color-text-secondary: #6c757d;
+  --color-text-light: #ffffff;
+  --color-border: #dee2e6;
+  --color-border-focus: #007bff;
+  --color-error: #dc3545;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Border Radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-focus: 0 0 0 3px rgba(0, 123, 255, 0.25);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+}
+
+/**
+ * @description Dark theme variables
+ * Overrides the default light theme variables when dark theme is active
+ */
+[data-theme="dark"] {
+  --color-primary: #0d6efd;
+  --color-primary-dark: #0a58ca;
+  --color-background: #212529;
+  --color-background-alt: #343a40;
+  --color-background-card: #2c3034;
+  --color-background-card-rgb: 44, 48, 52;
+  --color-text: #f8f9fa;
+  --color-text-secondary: #adb5bd;
+  --color-text-light: #ffffff;
+  --color-border: #495057;
+  --color-border-focus: #0d6efd;
+  --color-error: #dc3545;
+}
+
+/**
+ * @description System theme detection
+ * Automatically applies dark theme variables when system preference is dark
+ * and no explicit theme is set
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    // Dark theme variables
+    --color-background: #121212;
+    --color-background-alt: #1e1e1e;
+    --color-background-card: #1e1e1e;
+    --color-text: #ffffff;
+    --color-text-secondary: #a0a0a0;
+    --color-text-light: #ffffff;
+    --color-border: #2d2d2d;
+    --color-border-focus: #4da3ff;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/**
+ * @description Mixins for common theme-related styles
+ */
+@mixin theme-colors {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+@mixin card-styles {
+  background: var(--color-background-card);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+@mixin focus-ring {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-color: var(--color-border-focus);
+} 

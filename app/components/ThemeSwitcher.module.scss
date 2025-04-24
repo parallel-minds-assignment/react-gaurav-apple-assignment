@@ -1,0 +1,82 @@
+/**
+ * @file ThemeSwitcher.module.scss
+ * @description Styles for the ThemeSwitcher component.
+ * Contains styles for the theme switcher container and theme buttons.
+ * Uses CSS modules for scoped styling.
+ * 
+ * @author Gaurav Bagul
+ * @company Parallel Minds
+ * @created April 22, 2024
+ */
+
+/**
+ * @description Container for the theme switcher buttons
+ * Features:
+ * - Fixed position at bottom right
+ * - Semi-transparent background
+ * - Rounded corners
+ * - Subtle shadow
+ */
+.themeSwitcher {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: var(--color-background-alt);
+  border-radius: var(--border-radius-md);
+  position: fixed;
+  bottom: var(--spacing-md);
+  right: var(--spacing-md);
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+}
+
+/**
+ * @description Style for individual theme buttons
+ * Features:
+ * - Square shape with consistent dimensions
+ * - Transparent background
+ * - Hover and active states
+ * - Smooth transitions
+ * - Icon sizing
+ */
+.themeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  position: relative;
+
+  /**
+   * @description Hover state for theme buttons
+   * Changes background and text color on hover
+   */
+  &:hover {
+    background: var(--color-background-card);
+    color: var(--color-text);
+  }
+
+  /**
+   * @description Active state for theme buttons
+   * Applies primary color background and light text
+   */
+  &.active {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+  }
+
+  /**
+   * @description SVG icon sizing
+   * Ensures consistent icon dimensions
+   */
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+} 

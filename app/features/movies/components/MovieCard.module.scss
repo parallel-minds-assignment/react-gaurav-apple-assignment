@@ -1,0 +1,246 @@
+/**
+ * @file MovieCard.module.scss
+ * @description Styles for the MovieCard component.
+ * Contains styles for the card container, poster, info section, and tooltip.
+ * Uses CSS modules for scoped styling.
+ * 
+ * @author Gaurav Bagul
+ * @company Parallel Minds
+ * @created April 22, 2024
+ */
+
+/**
+ * @description Main card container styles
+ * Features:
+ * - Background color and border radius
+ * - Box shadow and hover effects
+ * - Focus state for accessibility
+ * - Z-index management for hover state
+ */
+.card {
+  background: var(--color-background-card);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: visible;
+  transition: transform var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    transform: translateY(-4px);
+    z-index: 2;
+    box-shadow: var(--shadow-md);
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+}
+
+/**
+ * @description Loading state for the tooltip
+ * Features:
+ * - Positioned absolutely relative to the card
+ * - Arrow indicator pointing to the card
+ * - Consistent styling with the card
+ * - Visible loading indicator
+ */
+.tooltipContainer {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: 1000;
+  pointer-events: none;
+  transform: translate(100%, -50%);
+  min-width: 200px;
+  max-width: 300px;
+  margin-left: 16px;
+}
+
+.tooltip {
+  position: relative;
+  background: var(--color-background-card);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  min-width: 200px;
+  max-width: 300px;
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  height: 100%;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid var(--color-background-card);
+  }
+}
+
+.tooltipLoading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--color-text-secondary);
+  min-height: 120px;
+  background: var(--color-background-card);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 16px;
+  border: 1px solid var(--color-border);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid var(--color-background-card);
+  }
+
+  &.error {
+    color: #ff4444;
+    border-color: rgba(255, 68, 68, 0.2);
+    background-color: rgba(255, 68, 68, 0.05);
+
+    &::before {
+      border-right-color: rgba(255, 68, 68, 0.05);
+    }
+  }
+}
+
+.tooltipError {
+  padding: 16px;
+  color: #ff0000;
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+}
+
+/**
+ * @description Container for the movie poster
+ * Features:
+ * - Maintains aspect ratio using padding-top
+ * - Background color for loading state
+ * - Overflow handling
+ */
+.posterContainer {
+  position: relative;
+  padding-top: 150%;
+  background: var(--color-background-alt);
+  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/**
+ * @description Movie poster image styles
+ * Features:
+ * - Covers the container while maintaining aspect ratio
+ * - Rounded corners at the top
+ */
+.poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+}
+
+/**
+ * @description Placeholder for when no poster is available
+ * Features:
+ * - Centered text
+ * - Background color matching the container
+ * - Consistent border radius
+ */
+.placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background-alt);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+}
+
+/**
+ * @description Container for movie information
+ * Features:
+ * - Consistent padding
+ * - Contains title, year, and type
+ */
+.info {
+  padding: var(--spacing-md);
+}
+
+/**
+ * @description Movie title styles
+ * Features:
+ * - Bold font weight
+ * - Text overflow handling
+ * - Consistent color
+ */
+.title {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/**
+ * @description Movie year styles
+ * Features:
+ * - Secondary text color
+ * - Smaller font size
+ * - Consistent spacing
+ */
+.year {
+  margin: 0 0 var(--spacing-xs);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/**
+ * @description Movie type styles
+ * Features:
+ * - Secondary text color
+ * - Smallest font size
+ * - Capitalized text
+ */
+.type {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+} 

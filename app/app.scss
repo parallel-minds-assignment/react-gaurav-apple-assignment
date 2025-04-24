@@ -1,0 +1,56 @@
+/**
+ * @file app.scss
+ * @description Global styles and theme configuration for the Instant Movie Search React application.
+ * This file contains the base styles, theme variables, and dark mode configuration.
+ * 
+ * @author Gaurav Bagul
+ * @company Parallel Minds
+ * @created April 22, 2024
+ */
+
+/* Import Tailwind CSS and custom theme styles */
+@use "tailwindcss";
+@use "./styles/theme.scss" as theme;
+
+/**
+ * Root level configuration
+ * Defines the default font family stack and other global variables
+ */
+:root {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/**
+ * Base styles for HTML and body elements
+ * Sets up the default background, text color, and font family
+ * Ensures full viewport height and removes default margins/padding
+ */
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Dark mode theme configuration
+ * Defines color variables for dark mode when no explicit theme is set
+ * Includes colors for:
+ * - Background (primary, alternate, and card)
+ * - Text (primary and secondary)
+ * - Borders
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-background: #212529;
+    --color-background-alt: #343a40;
+    --color-background-card: #2c3034;
+    --color-text: #f8f9fa;
+    --color-text-secondary: #adb5bd;
+    --color-border: #495057;
+  }
+} 

@@ -1,0 +1,288 @@
+/**
+ * @file MovieSearch.module.scss
+ * @description Styles for the MovieSearch component.
+ * Contains styles for the search container, movie grid, and movie details display.
+ * Uses CSS modules for scoped styling.
+ * 
+ * @author Gaurav Bagul
+ * @company Parallel Minds
+ * @created April 22, 2024
+ */
+
+/**
+ * @description Main container styles
+ * Features:
+ * - Max width constraint for large screens
+ * - Centered layout with auto margins
+ * - Consistent padding using CSS variables
+ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+/**
+ * @description Search container styles
+ * Features:
+ * - Full width container
+ * - Centered layout
+ * - Consistent max width
+ */
+.searchContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/**
+ * @description Search wrapper styles
+ * Features:
+ * - Relative positioning for absolute children
+ * - Flex layout for alignment
+ * - Center alignment of items
+ */
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/**
+ * @description Search box styles
+ * Features:
+ * - Relative positioning for absolute children
+ * - Bottom margin for spacing
+ * - Full width container
+ */
+.searchBox {
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+  width: 100%;
+}
+
+/**
+ * @description Search input styles
+ * Features:
+ * - Full width input
+ * - Consistent padding and font size
+ * - Border and border radius
+ * - Background and text colors
+ * - Focus state with border color and shadow
+ * - Placeholder text styling
+ */
+.searchInput {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  padding-right: calc(var(--spacing-lg) + 24px);
+  font-size: 1.125rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  background: var(--color-background);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+    box-shadow: var(--shadow-focus);
+  }
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+}
+
+/**
+ * @description Loading spinner styles
+ * Features:
+ * - Absolute positioning
+ * - Centered vertically
+ * - Animated border
+ * - Consistent size
+ */
+.loadingSpinner {
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-top: 2px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/**
+ * @description Spin animation keyframes
+ * Features:
+ * - 360-degree rotation
+ * - Maintains vertical centering
+ */
+@keyframes spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+/**
+ * @description Error message styles
+ * Features:
+ * - Error color from theme
+ * - Centered text
+ * - Top margin for spacing
+ */
+.error {
+  color: var(--color-error);
+  text-align: center;
+  margin-top: var(--spacing-md);
+}
+
+/**
+ * @description Results container styles
+ * Features:
+ * - Grid layout for movie cards
+ * - Responsive columns
+ * - Consistent gap between items
+ * - Top margin for spacing
+ */
+.resultsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+/**
+ * @description Movies grid styles
+ * Features:
+ * - Grid layout for movie cards
+ * - Responsive columns
+ * - Consistent gap between items
+ * - Top margin for spacing
+ * - Relative positioning for absolute children
+ */
+.moviesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  position: relative;
+}
+
+/**
+ * @description No results message styles
+ * Features:
+ * - Centered text
+ * - Consistent padding
+ * - Secondary text color
+ * - Standard font size
+ */
+.noResults {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+/**
+ * @description Load more trigger styles
+ * Features:
+ * - Absolute positioning
+ * - Fixed height for intersection detection
+ * - Full width
+ * - Positioned below the grid
+ */
+.loadMoreTrigger {
+  position: absolute;
+  bottom: -100px;
+  height: 100px;
+  width: 100%;
+}
+
+/**
+ * @description Loading more indicator styles
+ * Features:
+ * - Centered text
+ * - Consistent padding
+ * - Secondary text color
+ * - Smaller font size
+ * - Flex layout for spinner
+ * - Grid column spanning
+ */
+.loadingMore {
+  text-align: center;
+  padding: var(--spacing-md);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  grid-column: 1 / -1;
+
+  &::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--color-border);
+    border-top: 2px solid var(--color-primary);
+    border-radius: 50%;
+    animation: loadingSpin 1s linear infinite;
+  }
+}
+
+/**
+ * @description Loading spin animation keyframes
+ * Features:
+ * - 360-degree rotation
+ */
+@keyframes loadingSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/**
+ * @description Details loading indicator styles
+ * Features:
+ * - Centered text
+ * - Secondary text color
+ * - Vertical margin for spacing
+ */
+.detailsLoading {
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin: var(--spacing-xl) 0;
+}
+
+/**
+ * @description Movie details container styles
+ * Features:
+ * - Card background color
+ * - Border radius
+ * - Consistent padding
+ * - Subtle shadow
+ * - Typography styles for title and paragraphs
+ */
+.details {
+  background: var(--color-background-card);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+
+  h2 {
+    margin: 0 0 var(--spacing-md);
+    color: var(--color-text);
+  }
+
+  p {
+    margin: 0 0 var(--spacing-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+} 

@@ -1,0 +1,195 @@
+/**
+ * @file MovieTooltip.module.scss
+ * @description Styles for the MovieTooltip component.
+ * Contains styles for the tooltip container, star rating, and content elements.
+ * Uses CSS modules for scoped styling.
+ * 
+ * @author Gaurav Bagul
+ * @company Parallel Minds
+ * @created April 22, 2024
+ */
+
+/**
+ * @description Main tooltip container styles
+ * Features:
+ * - Positioned absolutely relative to the card
+ * - Semi-transparent background using theme colors
+ * - Arrow indicator pointing to the card
+ * - Box shadow for depth
+ * - Disabled pointer events to prevent interaction
+ */
+.tooltip {
+  position: relative;
+  background: var(--color-background-card);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  min-width: 250px;
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  border: 1px solid var(--color-border);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid var(--color-background-card);
+  }
+}
+
+/**
+ * @description Movie title styles
+ * Features:
+ * - Bold font weight
+ * - Larger font size
+ * - Theme text color
+ * - Bottom margin for spacing
+ */
+.title {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-sm);
+}
+
+/**
+ * @description Movie year styles
+ * Features:
+ * - Secondary text color
+ * - Smaller font size
+ * - Bottom margin for spacing
+ */
+.year {
+  margin: 0 0 var(--spacing-md);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/**
+ * @description Directors container styles
+ * Features:
+ * - Bottom margin for spacing
+ * - Contains individual director paragraphs
+ */
+.directors {
+  margin: 0 0 var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-md);
+}
+
+/**
+ * @description Individual director styles
+ * Features:
+ * - Secondary text color
+ * - Smaller font size
+ * - Bottom margin for spacing
+ * - Removes margin from last child
+ */
+.director {
+  margin: 0 0 var(--spacing-xs);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * @description Star rating container styles
+ * Features:
+ * - Flex layout for horizontal alignment
+ * - Gap between stars
+ * - Aligns items to center
+ */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-md);
+}
+
+/**
+ * @description Star icon styles
+ * Features:
+ * - Gold color for stars
+ * - Consistent size
+ * - Line height adjustment
+ */
+.star {
+  color: #ffc107;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/**
+ * @description Half star container styles
+ * Features:
+ * - Relative positioning for absolute children
+ * - Fixed dimensions
+ * - Overflow handling
+ * - Vertical alignment
+ */
+.halfStar {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+/**
+ * @description Full half of a half star
+ * Features:
+ * - Absolute positioning
+ * - Left-aligned
+ * - 50% width
+ * - Gold color
+ */
+.halfStarFull {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+  color: #ffc107;
+}
+
+/**
+ * @description Empty half of a half star
+ * Features:
+ * - Absolute positioning
+ * - Full width
+ * - Gold color
+ */
+.halfStarEmpty {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  color: #ffc107;
+}
+
+/**
+ * @description Rating text styles
+ * Features:
+ * - Left margin for spacing
+ * - Smaller font size
+ * - Secondary text color
+ */
+.ratingText {
+  margin-left: var(--spacing-sm);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+} 
